@@ -1,12 +1,23 @@
 import React, { useContext } from 'react';
 import PokeContext from '../context/PokeContext';
-
+import '../App.css';
 function Pokedex() {
+
   const {data, pkmnID, setPkmnID, pkmnName, setPkmnName} = useContext(PokeContext);
-  
+
   let pkmnNumber = pkmnID;
 
-  const searchByID = ({ target: { value } }) => {
+  const previousPkmn = () => {
+    if(pkmnID > 1){
+      setPkmnID(pkmnNumber -= 1);
+    }
+  }
+
+  const nextPkmn = () => {
+    setPkmnID(pkmnNumber += 1);
+  }
+
+  const searchByID = ({target:{value}}) => {
     if (value === '') {
       value = Number(1)
     }
@@ -23,7 +34,7 @@ function Pokedex() {
   }
 
   return (
-    <main>
+    <main className="main-pokedex">
       <section className="filters-container">
         <label htmlFor="pkmnID">
           {'Id#: '}
@@ -35,19 +46,19 @@ function Pokedex() {
           onChange={searchByID}
         />
         <label htmlFor="pkmnName">
-            {'Nome: '}
-          </label>
-          <input
-            type="text"
-            id="pkmnName"
-            onChange={searchByName}
-          />
-          <button
-            type="button"
-            onClick={getIdFromName}
-          >
-            {'Procurar'}
-          </button>
+          {'Nome: '}
+        </label>
+        <input
+          type="text"
+          id="pkmnName"
+          onChange={searchByName}
+        />
+        <button
+          type="button"
+          onClick={getIdFromName}
+        >
+          {'Procurar'}
+        </button>
       </section>
       <section>
         <div className="pkmn-type">
@@ -90,6 +101,14 @@ function Pokedex() {
                 ))}
             </ul>
           }
+        </div>
+        <div className="buttons-container">
+          <button type="button" onClick={previousPkmn}>
+          {'Anterior'}
+          </button>
+          <button type="button" onClick={nextPkmn}>
+            {'Próximo'}
+          </button>
         </div>
       </section>
     </main>

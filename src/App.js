@@ -1,9 +1,13 @@
-import logo from './logo.svg';
+import React from 'react';
+import PokeProvider from './context/PokeProvider';
+import Pokedex from './components/Pokedex';
 import './App.css';
 
 function App() {
   return (
-    <div />
+    <PokeProvider>
+      <Pokedex />
+    </PokeProvider>
   );
 }
 
