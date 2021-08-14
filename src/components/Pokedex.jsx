@@ -49,6 +49,49 @@ function Pokedex() {
             {'Procurar'}
           </button>
       </section>
+      <section>
+        <div className="pkmn-type">
+          <p>Type:</p>
+          <ul>
+            {data && data.types.map(
+              ({ type }, index) =>
+                index <= data.types.length && (
+              <li>{type.name[0].toUpperCase() + type.name.substr(1)}</li>)
+              )}
+          </ul>
+        </div>
+        <div className="pokemon-container">
+        <input
+          type="image"
+          src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/${data && data.id}.gif`}
+          alt={data && data.name}
+          data-testid="pokemon_sprite"
+          className="pkmn-img"
+        />
+        <p
+          className="pkmn-name"
+        >
+          { data && `${data.id}. ${data.name[0].toUpperCase() + data.name.substr(1) }`}
+        </p>
+        </div>
+        <div className="pkmn-stats">
+          <p>{`Height: ${data && data.height/10}m`}</p>
+          <p>{`Weight: ${data && data.weight/10}Kg`}</p>
+          <p>Stats:</p>
+          {
+            <ul>
+            {data && data.stats.map(
+              ({ stat, base_stat }, index) =>
+                index <= data.stats.length &&
+                (
+                  <li>
+                    {`${stat.name[0].toUpperCase() + stat.name.substr(1)}: ${base_stat}`}
+                  </li>
+                ))}
+            </ul>
+          }
+        </div>
+      </section>
     </main>
   )
 }
