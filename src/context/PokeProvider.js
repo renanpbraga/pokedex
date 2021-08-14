@@ -5,23 +5,37 @@ import PokeContext from './PokeContext';
 function PokeProvider({ children }) {
   const [data, setData] = useState();
   const [pkmnID, setPkmnID] = useState(1);
+  const [pkmnName, setPkmnName] = useState('bulbasaur');
 
   const  getPokemon = () => {
     const endpoint = `https://pokeapi.co/api/v2/pokemon/${pkmnID}`;
     fetch(endpoint)
       .then((response) => response.json()
-        .then((results) => setData(results)))
+        .then((results) => setData(results)));
   }
+  
+  const fetchPkmnByName = () => {
+    const endpoint = `https://pokeapi.co/api/v2/pokemon/${pkmnName}`;
+    fetch(endpoint)
+      .then((response) => response.json()
+        .then((results) => setPkmnName(results)));
+  };
   
   useEffect(() => {
     getPokemon();
   }, [pkmnID]);
+
+  useEffect(() => {
+    fetchPkmnByName();
+  }, [pkmnName])
 
   const context =  {
     data,
     setData,
     pkmnID,
     setPkmnID,
+    pkmnName,
+    setPkmnName,
   }
 
   return (
