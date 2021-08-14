@@ -1,38 +1,79 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.main-pokedex {
+  background-image: url(images/pokedex.png);
+  background-position: center;
+  background-position-y: 5px;
+  background-repeat: no-repeat;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  height: 100vh;
+  margin: 0 auto;
+  width:800px;
+}
+
+.filters-container {
+  display: flex;
+  height: 23px;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  margin-top: 10px;
+  width: 100%;
 }
 
-.App-link {
-  color: #61dafb;
+.filters-container input {
+  margin-left:5px;
+  margin-right:20px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.pokemon-container {
+  display: flex;
+  flex-direction: column;
+  margin-left:180px;
+  margin-top: -193px;
+  width:170px;
+  height: 225px;
+}
+
+.pkmn-img {
+  width:50%;
+  margin: auto
+}
+
+.pkmn-name {
+  font-family: monospace;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 700;
+  width: 160px;
+}
+
+.pkmn-type {
+font-family: monospace;
+height: 175px;
+margin-left: 80px;
+margin-top:180px;
+width:100px;
+}
+
+.pkmn-type p {
+  font-weight: 700;;
+  margin-left:10px;
+}
+
+.pkmn-stats {
+  font-family: monospace;
+  margin-left: 460px;
+  margin-top: -220px;
+}
+
+.pkmn-stats p {
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.buttons-container {
+  margin-left:479px;
+  margin-top: 84px;
+}
+
+.buttons-container button {
+  height:40px;
 }
